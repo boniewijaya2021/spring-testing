@@ -42,5 +42,10 @@
 		</dependency>
 
 # put java script to post data to url
-# create controller api post and create service to process paraas from controller
+# create controller api post and create service to process params from controller
 # create message model for api respons
+# build local : mvn clean install
+# call url at : http://localhost:8191/test/form
+# test the formula 
+#Input: [4, 5, 1, 2, 0, 4]
+# output : 5
