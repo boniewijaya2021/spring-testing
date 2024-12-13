@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form Input Angka</title>
+    <script>
+        function submitForm() {
+            const input = document.getElementById("numbers").value;
+            const numbersArray = input.split(",").map(num => parseInt(num.trim()));  // Mengubah input menjadi array of numbers
+
+            // Membuat request menggunakan fetch
+            fetch('http://localhost:8191/test/taskSatu', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(numbersArray)  // Mengirimkan array sebagai JSON
+            })
+            .then(response => response.text())
+            .then(result => {
+                // Menampilkan hasil di dalam div
+                document.getElementById("result").innerText = result;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+<h1>Masukkan Angka</h1>
+<label for="numbers">Angka (pisahkan dengan koma):</label>
+<input type="text" id="numbers" placeholder="Contoh: 4, 5, 1, 2, 0, 4">
+<button type="button" onclick="submitForm()">Submit</button>
+
+<div id="result" style="margin-top: 20px;"></div>
+</body>
+</html>
